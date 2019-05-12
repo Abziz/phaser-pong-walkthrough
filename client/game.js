@@ -1,3 +1,4 @@
+
 const config = {
 	type: Phaser.CANVAS,
 	width: 800,
@@ -15,8 +16,8 @@ const config = {
 var game = new Phaser.Game(config);
 const SPEED = 200;
 function preload() {
-	this.load.image("paddle", "./assets/paddle.png");
-	this.load.spritesheet("ball", "./assets/ball.png", { frameWidth: 695, frameHeight: 673 })
+	this.load.image("paddle", "assets/paddle.png");
+	this.load.spritesheet("ball", "assets/ball.png", { frameWidth: 695, frameHeight: 673 })
 }
 var leftPaddle;
 var rightPaddle;
