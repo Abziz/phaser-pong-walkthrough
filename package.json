@@ -18,5 +18,8 @@
 	"homepage": "https://github.com/Abziz/phaser-pong-walkthrough#readme",
 	"dependencies": {
 		"express": "^4.16.4"
+	},
+	"devDependencies": {
+		"parcel-bundler": "^1.12.3"
 	}
 }
