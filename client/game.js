@@ -1,4 +1,4 @@
-
+import Phaser from 'phaser';
 const config = {
 	type: Phaser.CANVAS,
 	width: 800,
@@ -14,6 +14,7 @@ const config = {
 };
 
 var game = new Phaser.Game(config);
+
 const SPEED = 200;
 function preload() {
 	this.load.image("paddle", "assets/paddle.png");
