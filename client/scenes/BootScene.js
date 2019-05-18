@@ -13,25 +13,11 @@ export class BootScene extends Phaser.Scene {
 	preload() {
 		var width = this.cameras.main.width;
 		var height = this.cameras.main.height;
-		this.loadingText = this.make.text({
-			x: width / 2,
-			y: height / 2 - 50,
-			text: 'Loading...',
-			style: {
-				font: '20px monospace',
-				fill: '#ffffff'
-			}
-		});
+
+		this.loadingText = this.add.text(width / 2, height / 2 - 50, 'Loading...', { font: '20px monospace', fill: '#ffffff' });
 		this.loadingText.setOrigin(0.5, 0.5);
-		this.percentText = this.make.text({
-			x: width / 2,
-			y: height / 2 - 5,
-			text: '0%',
-			style: {
-				font: '18px monospace',
-				fill: '#ffffff'
-			}
-		});
+
+		this.percentText = this.add.text(width / 2, height / 2, "0%", { font: '18px monospace', fill: '#ffffff' });
 		this.percentText.setOrigin(0.5, 0.5);
 
 		this.load.on('progress', (value) => {
@@ -51,17 +37,12 @@ export class BootScene extends Phaser.Scene {
 		 * loading may happen too fast, because we have only a few assets.
 		 * uncomment this for loop to see how it would act if we had more.
 		 */
-		// for (let i = 0; i < 100; i++) {
-		// 	this.load.image(`BACKGROUND_SPRITE_${i}`, "assets/background.png");
-		// }
+		for (let i = 0; i < 100; i++) {
+			this.load.image(`BACKGROUND_SPRITE_${i}`, "assets/background.png");
+		}
 	}
 	create() {
-		setTimeout(() => {
-			this.scene.launch("MAIN_SCENE_KEY", { msg: "game is ready" });
-			this.loadingText.destroy();
-			this.percentText.destroy();
-		}, 1000);
-
+		this.scene.start("MAIN_SCENE_KEY", { msg: "assets are ready" });
 
 	}
 }
