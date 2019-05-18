@@ -1,12 +1,13 @@
 import Phaser from 'phaser';
 import { MainScene } from './scenes/MainScene';
+import { BootScene } from './scenes/BootScene';
 
 const config = {
 	type: Phaser.CANVAS,
 	width: 800,
 	height: 600,
 	parent: 'body',
-	scene: [MainScene],
+	scene: [BootScene, MainScene],
 	// scene: { preload, create, update },
 	physics: {
 		default: 'arcade',
