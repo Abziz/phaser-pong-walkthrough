@@ -7,6 +7,7 @@ export class Paddle extends Phaser.GameObjects.Sprite {
 		this.scene.add.existing(this);
 		this.body.setCollideWorldBounds(true);
 		this.body.setImmovable(true);
+		this.setOrigin(0, 0.5)
 	}
 	update(keys) {
 		if (keys.up.isDown) {

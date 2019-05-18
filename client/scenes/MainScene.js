@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import { Paddle } from '../sprites/Paddle';
 import { Ball } from '../sprites/Ball';
+import { Background } from '../sprites/Background';
 
 export class MainScene extends Phaser.Scene {
 
@@ -8,11 +9,10 @@ export class MainScene extends Phaser.Scene {
 		super({ key: "MAIN_SCENE_KEY" });
 	}
 	init(data) {
-
+		console.log(data.msg);
 	}
 	preload() {
-		this.load.image("PADDLE_SPRITE", "assets/paddle.png");
-		this.load.spritesheet("BALL_SPRITE", "assets/ball.png", { frameWidth: 695, frameHeight: 673 })
+
 	}
 	create() {
 		this.physics.world.setBoundsCollision(false, false, true, true);
@@ -23,9 +23,10 @@ export class MainScene extends Phaser.Scene {
 			yoyo: false,
 			repeat: -1
 		});
-		this.leftPaddle = new Paddle({ scene: this, x: 0, y: 400, key: "PADDLE_SPRITE" });
-		this.rightPaddle = new Paddle({ scene: this, x: this.game.config.width, y: 400, key: "PADDLE_SPRITE" });
+		this.leftPaddle = new Paddle({ scene: this, x: 0, y: 300, key: "PADDLE_SPRITE" });
+		this.rightPaddle = new Paddle({ scene: this, x: this.game.config.width - 26, y: 300, key: "PADDLE_SPRITE" });
 		this.ball = new Ball({ scene: this, x: this.cameras.main.centerX, y: this.cameras.main.centerY, key: "BALL_SPRITE" });
+		this.background = new Background({ scene: this, key: "BACKGROUND_SPRITE" })
 		//what happens when ball touches paddles
 		this.physics.add.collider(this.ball, [this.rightPaddle, this.leftPaddle], function (paddle, ball) {
 		}, null, this);
