@@ -42,7 +42,6 @@ export class BootScene extends Phaser.Scene {
 		}
 	}
 	create() {
-		this.scene.start("MAIN_SCENE_KEY", { msg: "assets are ready" });
-
+		this.scene.start("MAIN_MENU_SCENE_KEY");
 	}
 }
