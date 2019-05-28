@@ -18,6 +18,7 @@
 	"homepage": "https://github.com/Abziz/phaser-pong-walkthrough#readme",
 	"dependencies": {
 		"express": "^4.16.4",
+		"form-serialize": "^0.7.2",
 		"phaser": "^3.17.0"
 	},
 	"devDependencies": {
