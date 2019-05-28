@@ -1,13 +1,20 @@
 import Phaser from 'phaser';
 import { MainScene } from './scenes/MainScene';
 import { BootScene } from './scenes/BootScene';
+import { MenuScene } from './scenes/MenuScene';
+import { MenuLoginScene } from './scenes/MenuLoginScene';
+import { MenuRegisterScene } from './scenes/MenuRegisterScene';
 
 const config = {
 	type: Phaser.CANVAS,
 	width: 800,
 	height: 600,
 	parent: 'body',
-	scene: [BootScene, MainScene],
+	backgroundColor: "#444",
+	scene: [BootScene, MenuScene, MainScene, MenuLoginScene, MenuRegisterScene],
+	dom: {
+		createContainer: true
+	},
 	// scene: { preload, create, update },
 	physics: {
 		default: 'arcade',

@@ -40,9 +40,12 @@ export class BootScene extends Phaser.Scene {
 		for (let i = 0; i < 100; i++) {
 			this.load.image(`BACKGROUND_SPRITE_${i}`, "assets/background.png");
 		}
+
+		//load html
+		this.load.html("REGISTER_FORM_HTML", "/assets/dom/register-form.html");
+		this.load.html("LOGIN_FORM_HTML", "/assets/dom/login-form.html");
 	}
 	create() {
-		this.scene.start("MAIN_SCENE_KEY", { msg: "assets are ready" });
-
+		this.scene.start("MENU_SCENE_KEY", { msg: "assets are ready" });
 	}
 }
