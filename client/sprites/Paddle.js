@@ -1,8 +1,9 @@
 import Phaser from 'phaser';
+import { SPRITES } from '../constants';
 
 export class Paddle extends Phaser.GameObjects.Sprite {
-	constructor(config) {
-		super(config.scene, config.x, config.y, config.key)
+	constructor({ scene, x, y }) {
+		super(scene, x, y, SPRITES.PADDLE)
 		this.scene.physics.world.enable(this);
 		this.scene.add.existing(this);
 		this.body.setCollideWorldBounds(true);

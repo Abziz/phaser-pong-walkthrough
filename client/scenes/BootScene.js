@@ -1,9 +1,10 @@
-import Phaser from 'phaser';
+import Phaser, { DOM } from 'phaser';
+import { SCENES, SPRITES, HTML } from '../constants';
 
 export class BootScene extends Phaser.Scene {
 
 	constructor() {
-		super({ key: "BOOT_SCENE_KEY" });
+		super({ key: SCENES.BOOT });
 	}
 
 	init(data) {
@@ -16,10 +17,8 @@ export class BootScene extends Phaser.Scene {
 
 		this.loadingText = this.add.text(width / 2, height / 2 - 50, 'Loading...', { font: '20px monospace', fill: '#ffffff' });
 		this.loadingText.setOrigin(0.5, 0.5);
-
 		this.percentText = this.add.text(width / 2, height / 2, "0%", { font: '18px monospace', fill: '#ffffff' });
 		this.percentText.setOrigin(0.5, 0.5);
-
 		this.load.on('progress', (value) => {
 			this.percentText.setText(parseInt(value * 100) + '%');
 		});
@@ -30,22 +29,13 @@ export class BootScene extends Phaser.Scene {
 			console.log("done");
 		});
 
-		this.load.image("PADDLE_SPRITE", "assets/paddle.png");
-		this.load.spritesheet("BALL_SPRITE", "assets/ball.png", { frameWidth: 695, frameHeight: 673 })
-		this.load.image("BACKGROUND_SPRITE", "assets/background.png")
-		/**
-		 * loading may happen too fast, because we have only a few assets.
-		 * uncomment this for loop to see how it would act if we had more.
-		 */
-		for (let i = 0; i < 100; i++) {
-			this.load.image(`BACKGROUND_SPRITE_${i}`, "assets/background.png");
-		}
-
-		//load html
-		this.load.html("REGISTER_FORM_HTML", "/assets/dom/register-form.html");
-		this.load.html("LOGIN_FORM_HTML", "/assets/dom/login-form.html");
+		this.load.image(SPRITES.PADDLE, "assets/paddle.png");
+		this.load.image(SPRITES.BACKGROUND, "assets/background.png")
+		this.load.spritesheet(SPRITES.BALL, "assets/ball.png", { frameWidth: 695, frameHeight: 673 })
+		this.load.html(HTML.REGISTER, "/assets/dom/register-form.html");
+		this.load.html(HTML.LOGIN, "/assets/dom/login-form.html");
 	}
 	create() {
-		this.scene.start("MENU_SCENE_KEY", { msg: "assets are ready" });
+		this.scene.start(SCENES.MENU);
 	}
 }
