@@ -1,16 +1,25 @@
 import Phaser from 'phaser';
+import { SPRITES, ANIMATION } from '../constants';
 
 export class Ball extends Phaser.GameObjects.Sprite {
-	constructor(config) {
-		super(config.scene, config.x, config.y, config.key)
+	constructor({ scene, x, y }) {
+		super(scene, x, y, SPRITES.BALL)
 		this.scene.physics.world.enable(this);
 		this.scene.add.existing(this);
 		this.body.setCollideWorldBounds(true);
 		this.body.setBounce(1);
 		this.setScale(0.05)
-		this.play("BALL_ANIMATION");
+		this.scene.anims.create({
+			key: ANIMATION.BALL,
+			frames: this.scene.anims.generateFrameNumbers(SPRITES.BALL, { frames: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3] }),
+			frameRate: 15,
+			yoyo: false,
+			repeat: -1
+		});
+		this.play(ANIMATION.BALL);
 		this.reset();
 	}
+
 	reset() {
 		const { centerX, centerY } = this.scene.cameras.main;
 		this.setPosition(centerX, centerY);
